@@ -41,16 +41,16 @@ function YourComponent(props: { PraceID: number }) {
 }
 
 function CandidateDataComponent() {
-  const [data, setData] = useState<CandidateData[] | null>(null);
-  const { name } = useParams();
-  
+  const [data, setData] = useState<CandidateData | null>(null);
+  const { name }: { name?: string } = useParams();
+
   useEffect(() => {
     const fetchData = async () => {
       if (name) {
         try {
           const encodedName = encodeURIComponent(name);
           const response = await fetch(`http://127.0.0.1:8000/gmap/parace/${encodedName}/`);
-          const jsonData = await response.json();
+          const jsonData: CandidateData = await response.json();
           setData(jsonData);
         } catch (error) {
           console.error(error);
@@ -65,13 +65,13 @@ function CandidateDataComponent() {
     <div>
       {data !== null ? (
         <div>
-          <h1>{data[0].name}</h1>
-          <p>{data[0].address}</p>
+          <h1>{data.name}</h1>
+          <p>{data.address}</p>
         </div>
       ) : (
         <div>Loading...</div>
       )}
-      {data !== null && <YourComponent PraceID={data[0].PraceID} />}
+      {data !== null && <YourComponent PraceID={data.PraceID} />}
     </div>
   );
 }
