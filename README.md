@@ -45,4 +45,8 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 # typescript-base
+<<<<<<< HEAD
 # pilgerfahrt_frontend
+=======
+# template_frontend
+>>>>>>> 05c78f5d32311a2e2e4ead169b3d5b32c9266a56
